@@ -1,0 +1,13 @@
+/* hospital/core/static/core/styles.css */
+
+body {
+    font-family: Roboto, sans-serif;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+.container {
+    margin-top: 50px;
+}

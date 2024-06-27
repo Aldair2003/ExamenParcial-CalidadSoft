@@ -38,6 +38,7 @@ Este es un proyecto para la materia de Calidad de Software donde desarrollé un 
 4. **Aplicar migraciones**
 
    ```sh
+   cd hospital
    python manage.py makemigrations
    python manage.py migrate
    ```

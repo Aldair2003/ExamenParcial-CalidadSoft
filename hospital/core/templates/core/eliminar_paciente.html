@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eliminar Paciente</title>
+    <!-- Incluyendo Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Incluyendo Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Incluyendo CSS personalizado -->
+    <link href="{% static 'core/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="display-4 text-center">Eliminar Paciente</h1>
+        <p>¿Estás seguro de que deseas eliminar al paciente {{ paciente.nombre }}?</p>
+        <form method="post" class="mt-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-lg mt-3">Eliminar</button>
+            <a href="{% url 'detalle_paciente' paciente.pk %}" class="btn btn-secondary btn-lg mt-3">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

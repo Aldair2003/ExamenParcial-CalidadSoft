@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Doctores</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'core/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <a href="{% url 'home' %}" class="btn btn-primary mb-3">Regresar</a>
+        <h1 class="text-center">Doctores</h1>
+        {% for doctor in doctores %}
+            <div class="alert alert-info" role="alert">
+                {{ doctor.nombre }} - {{ doctor.especialidad }}
+            </div>
+        {% endfor %}
+        <a href="{% url 'nuevo_doctor' %}" class="btn btn-success">Agregar Doctor</a>
+    </div>
+</body>
+</html>

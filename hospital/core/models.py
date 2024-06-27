@@ -1,3 +1,5 @@
+# core/models.py
+
 from django.db import models
 
 class Paciente(models.Model):
@@ -13,13 +15,13 @@ class Doctor(models.Model):
     especialidad = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.nombre
+        return f'Doc. {self.nombre}'
 
 class Cita(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     fecha_cita = models.DateTimeField()
-    motivo = models.CharField(max_length=255)
+    motivo = models.TextField()
 
     def __str__(self):
-        return f"Cita con {self.doctor} para {self.paciente} el {self.fecha_cita}"
+        return f'Cita con {self.doctor.nombre} para {self.paciente.nombre} el {self.fecha_cita}'

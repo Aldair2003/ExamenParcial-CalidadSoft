@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalle de la Cita</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="{% static 'core/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="display-4">Detalles de la Cita</h1>
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Cita con {{ cita.doctor.nombre }}</h5>
+                <p class="card-text"><strong>Paciente:</strong> {{ cita.paciente.nombre }}</p>
+                <p class="card-text"><strong>Fecha de la Cita:</strong> {{ cita.fecha_cita }}</p>
+                <p class="card-text"><strong>Motivo:</strong> {{ cita.motivo }}</p>
+                <a href="{% url 'lista_citas' %}" class="btn btn-primary">Volver a la lista</a>
+                <a href="{% url 'editar_cita' cita.pk %}" class="btn btn-warning">Editar</a>
+                <a href="{% url 'eliminar_cita' cita.pk %}" class="btn btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

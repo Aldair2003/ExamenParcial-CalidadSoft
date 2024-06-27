@@ -1,0 +1,60 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nueva Cita</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'core/styles.css' %}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-start mb-4">
+            <a href="{% url 'home' %}" class="btn btn-primary">Regresar</a>
+        </div>
+        <h2 class="text-center mb-4">Nueva Cita</h2>
+        <form method="post" class="bg-light p-4 rounded shadow-sm">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_paciente">Paciente:</label>
+                {{ form.paciente|as_crispy_field }}
+            </div>
+            <div class="form-group">
+                <label for="id_doctor">Doctor:</label>
+                {{ form.doctor|as_crispy_field }}
+            </div>
+            <div class="form-group">
+                <label for="id_fecha_cita">Fecha cita:</label>
+                <div class="input-group date" id="datepicker">
+                    {{ form.fecha_cita|as_crispy_field }}
+                    <span class="input-group-append">
+                        <span class="input-group-text bg-white">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_motivo">Motivo:</label>
+                {{ form.motivo|as_crispy_field }}
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                todayHighlight: true,
+                autoclose: true,
+            });
+        });
+    </script>
+</body>
+</html>

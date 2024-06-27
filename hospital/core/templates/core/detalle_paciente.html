@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalle del Paciente</title>
+    <!-- Incluyendo Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Incluyendo Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Incluyendo CSS personalizado -->
+    <link href="{% static 'core/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="display-4">Detalles del Paciente</h1>
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ paciente.nombre }}</h5>
+                <p class="card-text"><strong>Edad:</strong> {{ paciente.edad }}</p>
+                <p class="card-text"><strong>Dirección:</strong> {{ paciente.direccion }}</p>
+                <a href="{% url 'lista_pacientes' %}" class="btn btn-primary">Volver a la lista</a>
+                <a href="{% url 'editar_paciente' paciente.pk %}" class="btn btn-warning">Editar</a>
+                <a href="{% url 'eliminar_paciente' paciente.pk %}" class="btn btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

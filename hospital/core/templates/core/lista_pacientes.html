@@ -1,20 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lista de Pacientes</title>
+    <title>Pacientes</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'core/styles.css' %}" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1 class="mt-5">Pacientes</h1>
-        <ul class="list-group mt-3">
-            {% for paciente in pacientes %}
-            <li class="list-group-item">
+    <div class="container mt-5">
+        <a href="{% url 'home' %}" class="btn btn-primary mb-3">Regresar</a>
+        <h1 class="text-center">Pacientes</h1>
+        {% for paciente in pacientes %}
+            <div class="alert alert-info" role="alert">
                 <a href="{% url 'detalle_paciente' paciente.pk %}">{{ paciente.nombre }}</a>
-            </li>
-            {% endfor %}
-        </ul>
-        <a href="{% url 'nuevo_paciente' %}" class="btn btn-success mt-3">Agregar Paciente</a>
+            </div>
+        {% endfor %}
+        <a href="{% url 'nuevo_paciente' %}" class="btn btn-success">Agregar Paciente</a>
     </div>
 </body>
 </html>

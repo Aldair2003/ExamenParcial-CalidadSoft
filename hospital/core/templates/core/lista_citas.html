@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Citas</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'core/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <a href="{% url 'home' %}" class="btn btn-primary mb-3">Regresar</a>
+        <h1 class="text-center">Citas</h1>
+        {% for cita in citas %}
+            <div class="alert alert-info" role="alert">
+                Cita con {{ cita.doctor }} para {{ cita.paciente }} el {{ cita.fecha_cita }}
+                <a href="{% url 'editar_cita' cita.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                <form action="{% url 'eliminar_cita' cita.pk %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Cancelar</button>
+                </form>
+            </div>
+        {% endfor %}
+        <a href="{% url 'nueva_cita' %}" class="btn btn-success">Agregar Cita</a>
+    </div>
+</body>
+</html>

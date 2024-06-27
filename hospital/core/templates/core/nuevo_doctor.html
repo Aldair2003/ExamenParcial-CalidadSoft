@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nuevo Doctor</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'core/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <a href="{% url 'lista_doctores' %}" class="btn btn-primary mb-3">Regresar</a>
+        <h2 class="text-center mb-4">Nuevo Doctor</h2>
+        <form method="post" class="bg-light p-4 rounded shadow-sm">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.nombre.label_tag }} {{ form.nombre }}
+            </div>
+            <div class="form-group">
+                {{ form.especialidad.label_tag }} {{ form.especialidad }}
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</body>
+</html>

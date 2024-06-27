@@ -1,15 +1,51 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Home</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'core/styles.css' %}" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e7e7e7;
+        }
+        .logo {
+            height: 80px;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px);
+        }
+        .btn-lg {
+            padding: 15px 30px;
+            font-size: 20px;
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="mt-5">Bienvenido al Sistema del Hospital</h1>
-        <nav>
-            <a href="{% url 'lista_pacientes' %}" class="btn btn-primary mt-3">Pacientes</a>
-        </nav>
+    <div class="header">
+        <h1 class="display-4">Bienvenido al Sistema del Hospital</h1>
+        <img src="{% static 'core/logo.png' %}" alt="Logo de la Universidad" class="logo">
+    </div>
+    <div class="content">
+        <div class="text-center">
+            <nav>
+                <a href="{% url 'lista_pacientes' %}" class="btn btn-primary btn-lg mt-3">Pacientes</a>
+                <a href="{% url 'lista_doctores' %}" class="btn btn-secondary btn-lg mt-3">Doctores</a>
+                <a href="{% url 'lista_citas' %}" class="btn btn-info btn-lg mt-3">Citas</a>
+            </nav>
+        </div>
     </div>
 </body>
 </html>

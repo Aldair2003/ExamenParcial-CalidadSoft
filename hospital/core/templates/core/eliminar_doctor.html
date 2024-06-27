@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eliminar Doctor</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'core/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Eliminar Doctor</h2>
+        <form method="post">
+            {% csrf_token %}
+            <p>¿Estás seguro de que deseas eliminar al doctor <strong>{{ doctor.nombre }}</strong>?</p>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'lista_doctores' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

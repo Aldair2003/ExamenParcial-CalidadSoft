@@ -8,11 +8,18 @@
 </head>
 <body>
     <div class="container mt-5">
-        <a href="{% url 'home' %}" class="btn btn-primary mb-3">Regresar</a>
-        <h1 class="text-center">Pacientes</h1>
+        <div class="d-flex justify-content-start mb-4">
+            <a href="{% url 'home' %}" class="btn btn-primary">Regresar</a>
+        </div>
+        <h2 class="text-center mb-4">Pacientes</h2>
         {% for paciente in pacientes %}
             <div class="alert alert-info" role="alert">
-                <a href="{% url 'detalle_paciente' paciente.pk %}">{{ paciente.nombre }}</a>
+                {{ paciente.nombre }}
+                <a href="{% url 'editar_paciente' paciente.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                <form action="{% url 'eliminar_paciente' paciente.pk %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                </form>
             </div>
         {% endfor %}
         <a href="{% url 'nuevo_paciente' %}" class="btn btn-success">Agregar Paciente</a>
